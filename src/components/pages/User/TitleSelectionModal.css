@@ -1,0 +1,63 @@
+.title-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.title-text {
+    font-size: 16px;
+    font-weight: bold;
+    color:#f5d15f;
+}
+
+.title-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* 모달이 위에 뜨도록 설정 */
+  }
+  
+  .title-modal-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .title-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+  }
+  
+  .title-item {
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .title-item.selected {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+  
+  .title-close-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  

@@ -1,0 +1,144 @@
+/* 모달 오버레이 */
+.inventory-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* 모달 본체 */
+.inventory-modal-container {
+  position: relative;
+  min-width: 500px;
+  max-width: 750px;
+  height: 60%;
+  width: 70%;
+  padding: 40px;
+  padding-top: 75px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url('../../assets/images/inventory/inventory_back.png');
+  background-size: 100% 100%; /* 이미지를 비율을 무시하고 컨테이너에 꽉 채움 */
+  background-position: center; /* 이미지 중앙 정렬 */
+  background-repeat: no-repeat; /* 이미지 반복 방지 */
+  z-index: 1; /* 배경 이미지가 모달 컨테이너 아래로 배치 */
+}
+
+/* 제목 스타일 */
+.inventory-title {
+  position: absolute;
+  top: 0px; /* 제목 위치 설정 */
+  left: 10px;
+  margin: 30px;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  z-index: 2;
+}
+
+.inventory-title::before {
+  content: attr(data-content); /* data-content 속성 값 사용 */
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  -webkit-text-stroke: 6px #032333; /* 테두리 두께와 색상 */
+  font-size: inherit;
+  font-weight: inherit;
+  width: 100%;
+  height: 100%;
+}
+
+/* 닫기 버튼 */
+.inventory-modal-close {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.inventory-modal-close img {
+  width: 40px;
+  height: 40px;
+}
+
+/* 모달 내용 */
+.inventory-modal-content {
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+}
+
+/* 인벤토리 리스트 컨테이너 */
+.inventory-modal-content ul {
+  display: grid; /* CSS Grid 사용 */
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* 최소 100px, 가능한 공간만큼 늘림 */
+  gap: 18px; /* 항목 사이 간격 */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* 인벤토리 리스트 아이템 */
+.inventory-modal-content li {
+  padding: 10px;
+  border: 4px solid #032333;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s, border 0.2s;
+  background-image: url('../../assets/images/inventory/item-b.png');
+  background-color: #fff; /* 기본 배경 */
+  background-size: 90% auto;
+  background-position: center; /* 이미지 중앙 정렬 */
+  aspect-ratio: 1 / 1; /* 정방형 유지 */
+  background-repeat: no-repeat; /* 이미지 반복 방지 */
+  position: relative; /* ::after를 위한 부모 요소 설정 */
+  overflow: hidden; /* ::after가 컨테이너를 벗어나지 않도록 */
+}
+
+/* 가상 요소를 이용한 반투명 배경 */
+.inventory-modal-content li::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0); /* 초기 상태: 완전 투명 */
+  transition: background-color 0.2s; /* 부드러운 전환 효과 */
+  z-index: 1; /* 이미지 위에 표시 */
+  border-radius: 10px; 
+}
+
+/* 호버 시 스타일 */
+.inventory-modal-content li:hover::after {
+  background-color: rgba(255, 255, 255, 0.5); /* 반투명 배경 */
+}
+
+.inventory-modal-content li:hover {
+  border: 5px solid #fff; /* 호버 시 테두리 변경 */
+  z-index: 2; /* hover 상태를 이미지보다 위로 */
+}
+
+/* 아이템 이미지 */
+.inventory-modal-content li img {
+  position: relative; /* 가상 요소 아래에 배치 */
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* 비율 유지하며 컨테이너에 맞춤 */
+  object-position: center; /* 이미지 가운데 정렬 */
+  z-index: 2; /* 가상 요소 아래로 가지 않도록 */
+}

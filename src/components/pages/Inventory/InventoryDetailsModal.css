@@ -1,0 +1,113 @@
+/* 상세 모달 오버레이 */
+.inventory-details-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1100;
+  }
+  
+/* 상세 모달 본체 */
+.inventory-details-modal {
+    /* padding: 30px; 내부 여백 제거 */
+    position: fixed;
+    width: 400px;
+    height: 250px;
+    background-image: url('../../assets/images/inventory/inventory-item-detail-b.png');
+    background-size: contain; /* 이미지가 컨테이너에 맞도록 조정 */
+    background-position: center; /* 이미지 중앙 정렬 */
+    background-repeat: no-repeat; /* 이미지 반복 방지 */
+    z-index: 1200;
+  
+    /* 배경 이미지 크기에 맞게 자동으로 크기 조정 */
+    display: flex;
+    flex-direction: column; /* 플렉스 방향을 세로로 변경 */
+    align-items: center; /* 내용 중앙 정렬 */
+    justify-content: center; /* 내용 중앙 정렬 */
+    gap: 10px;
+}
+  
+  /* 닫기 버튼 */
+  .inventory-details-modal-close {
+    position: absolute;
+    top: -5px;
+    right: -8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .inventory-details-modal-close img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .item-info {
+    width: 85%;
+    display: flex;
+    align-items: center; /* 내용 중앙 정렬 */
+    justify-content:flex-start; 
+    gap: 20px;
+  }
+
+  /* 제목 */
+  .inventory-details-modal h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  /* 설명 */
+  .inventory-details-modal p {
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    white-space: pre-line;
+  }
+  
+  /* 이미지 */
+  .itemImg {
+    width: 135px;
+    height: 135px;
+    object-fit:contain;
+  }
+  
+  /* 버튼 이미지 공통 스타일 */
+.button-image {
+  width: 100px;
+  height: auto;
+}
+
+/* 버튼 컨테이너 */
+.button-container {
+  display: flex;
+  justify-content: space-between;
+    gap: 20px;
+}
+
+/* 사용하기 버튼 */
+.use-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.use-btn.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* 버리기 버튼 */
+.discard-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}

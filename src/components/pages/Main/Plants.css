@@ -1,0 +1,52 @@
+.plants-container {
+  position: absolute;
+  display: flex;
+  justify-content: center; /* 가운데 정렬 */
+  align-items: flex-end; /* 아래쪽에 맞춤 */
+  gap: 35px;
+  z-index: 1; /* 다른 요소 위에 배치 */
+}
+
+.plant-slot {
+  position: relative; /* 선택 버튼 위치 조정을 위해 필요 */
+}
+
+.plant-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+}
+
+.plant-image {
+  width: 170px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.center-plant {
+  bottom: -40px;
+}
+
+.plant-image:hover {
+  transform: scale(1.1);
+}
+
+/* 선택 버튼 */
+.choice-button {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: block;
+  z-index: 2; /* 플랜트 이미지 위에 배치 */
+}
+
+.choice-button-image {
+  width: 90px;
+  height: auto;
+}

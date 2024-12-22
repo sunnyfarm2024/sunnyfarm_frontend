@@ -1,0 +1,65 @@
+.farm-container {
+  position: relative;
+  width: 1050px;
+  height: 300px; /* 높이를 늘려 정렬 여유 */
+  display: flex;
+  justify-content: space-between; /* 양쪽 끝으로 배치 */
+  align-items: flex-end; /* 세로축 끝에 맞춤 */
+}
+
+/* 왼쪽 sign 이미지 */
+.sign-container {
+  position: absolute;
+  right: 30px; /* 왼쪽에 여백 */
+  bottom: 0;
+}
+
+.sign-image {
+  width: 160px;
+  height: auto;
+}
+
+.farm-description {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  width: 70%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  pointer-events: none;
+  white-space: pre-line;
+}
+
+/* 노움 컨테이너: sign 왼쪽에 배치 */
+.gnome-container {
+  position: absolute;
+  right: 110px; /* sign 왼쪽 여백 */
+  bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gnome-image {
+  width: 120px;
+  height: 120px;
+}
+
+.gnome-timer {
+  margin-bottom: -10px;
+  font-size: 16px;
+  color: #fff;
+}
+
+/* 오른쪽 corner 이미지 */
+.corner-image {
+  position: absolute;
+  left: 0px; /* 오른쪽 여백 */
+  bottom: -75px; /* 바닥에 붙임 */
+  width: 220px;
+  height: auto;
+}
+
