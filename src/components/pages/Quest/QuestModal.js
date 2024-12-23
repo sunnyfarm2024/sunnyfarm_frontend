@@ -1,39 +1,63 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "./QuestModal.css";
 
-const QuestModal = ({ type, onClose }) => {
-  const title = type === "DAILY" ? "일일 퀘스트" : "장기 퀘스트";
+const QuestModal = ({ type, onClose })=> {
+  const [quests, setQuests] = useState([]);
+
+  useEffect(() => {
+    const fetchQuests = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8080/quest/list?type=${type}`);
+        setQuests(response.data);
+      } catch (error) {
+        console.error("Error fetching quests:", error);
+      }
+    };
+
+    fetchQuests();
+  }, [type]);
+
+  const claimReward = async (questId) => {
+    try {
+      const response = await axios.post(`http://localhost:8080/quest/reward?questId=${questId}`);
+      alert(response.data);
+      setQuests((prevQuests) =>
+        prevQuests.map((quest) =>
+          quest.questId === questId ? { ...quest, completed: true } : quest
+        )
+      );
+    } catch (error) {
+      console.error("Error claiming reward:", error);
+      alert("보상 수령에 실패했습니다.");
+    }
+  };
 
   return (
-    <div style={modalStyle}>
-      <h2>{title}</h2>
-      <p>{type === "DAILY" ? "오늘의 퀘스트를 완료하세요!" : "장기 목표를 달성하세요!"}</p>
-      <button onClick={onClose} style={buttonStyle}>닫기</button>
+    <div className="quest-popup" onClick={onClose}>
+      <div className="quest-content" onClick={(e) => e.stopPropagation()}>
+        <table>
+          <tbody>
+            {quests.map((quest) => (
+              <tr key={quest.questId}>
+                <td>{quest.questDescription}</td>
+                <td>{quest.reward}</td>
+                <td>
+                  {quest.completed ? (
+                    "✓"
+                  ) : quest.questProgress >= quest.questRequirement ? (
+                    <button onClick={() => claimReward(quest.questId)}>받기</button>
+                  ) : (
+                    `${quest.questProgress}/${quest.questRequirement}`
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
-};
-
-const modalStyle = {
-  position: 'fixed',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  backgroundColor: 'white',
-  padding: '20px',
-  borderRadius: '8px',
-  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-  zIndex: 1000,
-  width: '300px',
-  textAlign: 'center',
-};
-
-const buttonStyle = {
-  marginTop: '20px',
-  padding: '10px 20px',
-  backgroundColor: '#f44336',
-  color: 'white',
-  border: 'none',
-  borderRadius: '5px',
-  cursor: 'pointer',
-};
+}
 
 export default QuestModal;

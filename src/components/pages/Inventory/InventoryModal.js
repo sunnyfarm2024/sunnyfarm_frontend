@@ -182,9 +182,7 @@ const InventoryModal = ({
         }
       );
       if (response.status === 200) {
-        alert(`${selectedItem.inventoryItemName}을(를) 성공적으로 사용했습니다. 새로고침 후 적용됩니다.`);
-        handleCloseDetailsModal();
-        onClose();
+        window.location.reload();
       }
     } catch (error) {
       console.error("아이템 사용 중 오류 발생:", error.response?.data || error.message);

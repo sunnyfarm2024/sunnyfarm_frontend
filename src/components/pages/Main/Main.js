@@ -153,7 +153,7 @@ const Main = () => {
     setSelectedName(plantName);
     console.log(`위치: ${location}, 이름: ${plantName}`);
   };
-  
+ 
   return (
     <div className="main-container" style={{ backgroundImage: `url(${backgroundImage})` }} >
     {/* 강수 타입에 따른 오버레이 이미지 */}
@@ -195,13 +195,16 @@ const Main = () => {
           </button>
 
           {/* Shop 버튼 */}
-          <button onClick={() => navigate('/shop')}>
+          <button
+            onClick={() => navigate('/shop', { state: { user } })}
+          >
             <img
               src={shopBtnImg}
               alt="샵 버튼"
               style={{ width: 'auto', height: '70px', border: 'none', cursor: 'pointer' }}
             />
           </button>
+
 
           {/* PlantBook 버튼 */}
           <button onClick={() => setIsPlantBookModalOpen(true)}>
@@ -250,25 +253,24 @@ const Main = () => {
       {isFriendModalOpen && <FriendModal onClose={() => setIsFriendModalOpen(false)} />}
 
       {isInventoryModalOpen && (
-  <InventoryModal
-    plants={plants}
-    activateChoiceForEmptySlots={(callback) =>
-      plantsRef.current?.activateChoiceForEmptySlots(callback)
-    }
-    activateChoiceForActiveSlots={(callback) =>
-      plantsRef.current?.activateChoiceForActiveSlots(callback)
-    }
-    selectedLocation={selectedLocation}
-    selectedName={selectedName}
-    onClose={() => setIsInventoryModalOpen(false)}
-  />
-)}
-
+      <InventoryModal
+        plants={plants}
+        activateChoiceForEmptySlots={(callback) =>
+          plantsRef.current?.activateChoiceForEmptySlots(callback)
+        }
+        activateChoiceForActiveSlots={(callback) =>
+          plantsRef.current?.activateChoiceForActiveSlots(callback)
+        }
+        selectedLocation={selectedLocation}
+        selectedName={selectedName}
+        onClose={() => setIsInventoryModalOpen(false)}
+      />
+      )}
 
       {/* Daily Quest 모달 */}
       {isDailyQuestModalOpen && (
         <QuestModal
-          type="DAILY"
+          type="daily"
           onClose={() => setIsDailyQuestModalOpen(false)}
         />
       )}
@@ -276,7 +278,7 @@ const Main = () => {
       {/* Long Term Quest 모달 */}
       {isLongTermQuestModalOpen && (
         <QuestModal
-          type="LONGTERM"
+          type="longterm"
           onClose={() => setIsLongTermQuestModalOpen(false)}
         />
       )}

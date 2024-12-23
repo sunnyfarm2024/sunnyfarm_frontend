@@ -1,0 +1,222 @@
+.shop-container {
+    padding: 50px;
+    padding-top: 30px;
+    min-width: 650px;
+    height: 100%;
+    background-color: #1D202C;
+    overflow: hidden; /* 넘치는 부분 숨기기 */
+    display: flex;
+    flex-direction: column; /* 세로 방향으로 정렬 */
+    align-items: center;
+    background-image: url('../../assets/images/shop/shop-b.png');
+    background-size:auto 87%; /* 이미지를 비율을 무시하고 컨테이너에 꽉 채움 */
+    background-position: center bottom; /* 이미지 중앙 정렬 */
+    background-repeat: no-repeat; /* 이미지 반복 방지 */
+    z-index: 1000; /* 배경 이미지가 모달 컨테이너 아래로 배치 */
+  }
+  
+  .shop-header {
+    width: 100%;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+  }
+  
+.shop-title {
+    color: #fff;
+    font-size: 27px;
+}
+
+.shop-header-right {
+    display: flex; /* 오른쪽 요소들을 가로로 나열 */
+    gap: 10px; /* 요소 간의 간격 */
+}
+  
+  .shop-balance {
+    margin-top: 22px;
+  }
+  
+  .shop-close-button {
+    border: none;
+    cursor: pointer;
+  }
+
+  .shop-close-button img {
+    width: 37px;
+    height: 37px;
+  }
+  
+  .shop-categories {
+    width: 100%;
+    margin-top: 35px;
+    margin-bottom: 10px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    overflow:auto;
+    transition: opacity 0.3s ease;
+  }
+
+  .shop-categories button {
+    justify-content: center;
+    color: #A293DF;
+    font-size: 23px;
+  }
+
+  .shop-categories .active-category {
+    opacity: 1; /* 선택된 버튼 강조 */
+  }
+  
+  .shop-categories .inactive-category {
+    opacity: 0.6; /* 선택되지 않은 버튼 투명 */
+  }
+  
+  .shop-items-container {
+    width: 100%;
+    max-height: 450px; /* 컨테이너 최대 높이 설정 */
+    max-width: 920px;
+    overflow-y: auto; /* 수직 스크롤 활성화 */
+    overflow-x: hidden; /* 수평 스크롤 숨김 */
+    padding: 10px; /* 내부 여백 */   
+  }
+  
+  .shop-items {
+    width: 100%;
+    display: grid; /* CSS Grid 사용 */
+    grid-template-columns: repeat(auto-fill, minmax(440px, 1fr)); /* 최소 100px, 가능한 공간만큼 늘림 */
+    gap: 18px; /* 항목 사이 간격 */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .shop-item {
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    width:440px;
+    height: 180px;
+    justify-content:space-between;
+    align-items: center;
+
+    background-image: url('../../assets/images/shop/shop-content-b.png');
+    background-size:contain; /* 이미지를 비율을 무시하고 컨테이너에 꽉 채움 */
+    background-position: center bottom; /* 이미지 중앙 정렬 */
+    background-repeat: no-repeat; /* 이미지 반복 방지 */
+    z-index: 10; /* 배경 이미지가 모달 컨테이너 아래로 배치 */
+  }
+  
+  .shop-item-img {
+    width: 140px;
+    height: 140px;
+    object-fit: contain; /* 이미지 비율 유지하며 컨테이너에 맞춤 */
+
+    background-image: url('../../assets/images/shop/s-itme-b.png');
+    background-size:110%; /* 이미지를 비율을 무시하고 컨테이너에 꽉 채움 */
+    background-position: center; /* 이미지 중앙 정렬 */
+    background-repeat: no-repeat; /* 이미지 반복 방지 */
+  }
+  
+  .shop-item-info {
+    margin: 20px;
+    display: flex;
+    flex-direction: column; /* 세로 방향으로 정렬 */
+    justify-content:space-between;
+    align-items:flex-start;
+    width: 220px;
+    height: 80%;
+  }
+
+  .shop-item-description {
+    color: #fff;
+    display: flex;
+    flex-direction: column; /* 세로 방향으로 정렬 */
+    align-items:flex-start;
+    height: 100%;
+    gap: 3px;
+  }
+
+  .shop-item-description h3 {
+    font-size: 25px;
+  }
+
+.shop-item-description p {
+    font-size: 20px;
+    color: #FFFF9A;
+    white-space: pre-line; /* 줄바꿈 (\n)을 적용 */
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+}
+.small-font {
+    font-size: 18px !important; /* 글자 크기 줄임 */
+  }
+
+.price-container {
+    width: 100%;
+    display: flex;
+    justify-content:flex-end;
+}
+.coin-class,
+.diamond-class,
+.default-class {
+    font-size: 25px; /* 글자 크기 줄임 */
+    color: #FFFF9A;
+}
+
+.coin-img,
+.dia-img,
+.cash-img {
+    width: 30px;
+    object-fit: contain;
+    margin-right: 5px;
+}
+
+.cash-img {
+    margin:0;
+}
+
+  .popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    max-width: 90%;
+  }
+  
+  .popup-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .popup-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .popup-buttons button:first-child {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .popup-buttons button:last-child {
+    background-color: #f44336;
+    color: white;
+  }
+  
